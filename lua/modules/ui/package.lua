@@ -1,9 +1,11 @@
 local package = require('core.pack').package
 local conf = require('modules.ui.config')
 
-package({ 'glepnir/zephyr-nvim', config = conf.zephyr })
-
-package({ 'glepnir/dashboard-nvim', config = conf.dashboard })
+package({
+  'catppuccin/nvim',
+  name = 'catppuccin',
+  config = conf.catppuccin,
+})
 
 package({
   'nvim-tree/nvim-tree.lua',
@@ -12,4 +14,14 @@ package({
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 })
 
-package({ 'akinsho/nvim-bufferline.lua', config = conf.nvim_bufferline, dependencies = { 'nvim-tree/nvim-web-devicons'} })
+package({
+  'akinsho/nvim-bufferline.lua',
+  config = conf.nvim_bufferline,
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+})
+
+package({
+  'nvim-lualine/lualine.nvim',
+  config = conf.lualine,
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+})

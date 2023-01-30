@@ -73,6 +73,11 @@ function keymap.cu(str)
   return '<C-u><cmd>' .. str .. '<CR>'
 end
 
+-- escape
+function keymap.esc_cmd(str)
+  return '<Esc><cmd>' .. str .. '<CR>'
+end
+
 --@private
 local keymap_set = function(mode, tbl)
   vim.validate({
@@ -86,7 +91,7 @@ local keymap_set = function(mode, tbl)
 
   local options = len == 3 and tbl[3] or keymap.new_opts()
 
-  vim.keymap.set(mode, tbl[1], tbl[2], options)
+  vim.api.nvim_set_keymap(mode, tbl[1], tbl[2], options)
 end
 
 local function map(mod)
@@ -111,5 +116,7 @@ keymap.cmap = map('c')
 keymap.vmap = map('v')
 keymap.xmap = map('x')
 keymap.tmap = map('t')
+keymap.omap = map('o')
+keymap.map = map('')
 
 return keymap

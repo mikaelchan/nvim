@@ -1,18 +1,45 @@
 local config = {}
 
--- config server in this function
-function config.nvim_lsp() end
+function config.nvim_lsp()
+  require('modules.completion.nvim_lsp')
+end
 
-function config.nvim_cmp()
-  local cmp = require('cmp')
-
-  cmp.setup({
-    preselect = cmp.PreselectMode.Item,
-    window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
+function config.lspsaga()
+  require('lspsaga').setup({
+    ui = {
+      border = 'rounded',
+      code_action = ' ',
+      diagnostic = ' ',
+      kind = {
+        Class = ' ',
+        Constant = ' ',
+        Constructor = ' ',
+        Enum = '練 ',
+        EnumMember = ' ',
+        Event = ' ',
+        Field = 'ﰠ ',
+        File = ' ',
+        Folder = ' ',
+        Function = ' ',
+        Interface = ' ',
+        Key = ' ',
+        Method = ' ',
+        Operator = ' ',
+        Snippet = '  ',
+        Struct = 'פּ ',
+        Text = ' ',
+        Unit = '塞 ',
+        Value = ' ',
+      },
+    },
+    lightbulb = {
+      virtual_text = false,
     },
   })
+end
+
+function config.nvim_cmp()
+  require('modules.completion.cmp')
 end
 
 function config.lua_snip()
@@ -35,6 +62,37 @@ function config.lua_snip()
   require('luasnip.loaders.from_vscode').lazy_load({
     paths = { './snippets/' },
   })
+end
+
+function config.null_ls()
+  require('modules.completion.null_ls')
+end
+
+function config.ts()
+  require('typescript').setup(require('modules.completion.lsp.ts'))
+end
+
+function config.refactoring()
+  require('refactoring').setup({})
+end
+
+function config.copilot()
+  require('copilot').setup({
+    panel = {
+      enabled = false,
+    },
+    suggestion = {
+      enabled = false,
+    },
+    filetypes = {
+      yaml = true,
+      markdown = true,
+    },
+  })
+end
+
+function config.copilot_cmp()
+  require('copilot_cmp').setup({})
 end
 
 return config

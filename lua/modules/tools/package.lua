@@ -12,9 +12,7 @@ package({
 })
 
 package({
-  'glepnir/hlsearch.nvim',
-  event = 'BufRead',
-  config = function()
-    require('hlsearch').setup()
-  end,
+  'akinsho/toggleterm.nvim',
+  event = 'VeryLazy',
+  config = conf.toggleterm,
 })
