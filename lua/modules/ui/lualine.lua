@@ -217,7 +217,7 @@ local config = {
           return '  '
         end,
         color = function()
-          return { fg = mode_color[vim.fn.mode()], surface1 = colors.base }
+          return { fg = mode_color[vim.fn.mode()], bg = colors.base }
         end,
         padding = { left = 1, right = 0 },
       },
@@ -248,14 +248,14 @@ table.insert(config.sections.lualine_a, {
     return mode()
   end,
   color = function()
-    return { surface1 = mode_color[vim.fn.mode()], fg = colors.surface1 }
+    return { bg = mode_color[vim.fn.mode()], fg = colors.surface1 }
   end,
 })
 table.insert(config.sections.lualine_b, {
   'b:gitsigns_head',
   icon = ' ',
   cond = conditions.check_git_workspace and conditions.hide_in_width,
-  color = { fg = colors.blue, surface1 = colors.surface1 },
+  color = { fg = colors.blue, bg = colors.surface1 },
   padding = 0,
 })
 
@@ -269,14 +269,14 @@ ins_left({
     end
     return ''
   end,
-  color = { fg = colors.teal, surface1 = colors.surface1 },
+  color = { fg = colors.teal, bg = colors.surface1 },
   cond = conditions.hide_small,
 })
 
 ins_left({
   function()
     vim.api.nvim_command(
-      'hi! LualineFileIconColor guifg=' .. get_file_icon_color() .. ' guisurface1=' .. colors.surface1 .. ' gui=bold'
+      'hi! LualineFileIconColor guifg=' .. get_file_icon_color() .. ' guibg=' .. colors.surface1 .. ' gui=bold'
     )
     local fname = vim.fn.expand('%:p')
     if string.find(fname, 'term://') ~= nil then
@@ -335,7 +335,7 @@ ins_left({
   end,
   cond = conditions.buffer_not_empty and conditions.hide_small,
   padding = { left = 1, right = 1 },
-  color = { fg = colors.fg, gui = 'bold', surface1 = colors.surface1 },
+  color = { fg = colors.text, gui = 'bold', bg = colors.surface1 },
 })
 
 ins_left({
@@ -343,9 +343,9 @@ ins_left({
   source = diff_source,
   symbols = { added = '  ', modified = '柳', removed = ' ' },
   diff_color = {
-    added = { fg = colors.green, surface1 = colors.surface1 },
-    modified = { fg = colors.blue, surface1 = colors.surface1 },
-    removed = { fg = colors.red, surface1 = colors.surface1 },
+    added = { fg = colors.green, bg = colors.surface1 },
+    modified = { fg = colors.blue, bg = colors.surface1 },
+    removed = { fg = colors.red, bg = colors.surface1 },
   },
   color = {},
   cond = nil,
@@ -378,12 +378,12 @@ ins_left({
     return testing() ~= nil
   end,
   hl = {
-    fg = colors.fg,
+    fg = colors.text,
   },
   left_sep = ' ',
   right_sep = {
     str = ' |',
-    hl = { fg = colors.fg },
+    hl = { fg = colors.text },
   },
 })
 
@@ -392,7 +392,7 @@ ins_left({
     return ''
   end,
   padding = { left = 0, right = 0 },
-  color = { fg = colors.surface1 },
+  color = { fg = colors.surface1},
   cond = nil,
 })
 
@@ -410,7 +410,7 @@ ins_right({
   sources = { 'nvim_diagnostic' },
   symbols = { error = ' ', warn = ' ', info = '', hint = ' ' },
   cond = conditions.hide_in_width,
-  color = { fg = colors.fg, surface1 = colors.surface1 },
+  color = { fg = colors.text, bg = colors.surface1 },
 })
 
 ins_right({
@@ -420,7 +420,7 @@ ins_right({
   color = function()
     local buf = vim.api.nvim_get_current_buf()
     local ts = vim.treesitter.highlighter.active[buf]
-    return { fg = ts and not vim.tbl_isempty(ts) and colors.green or colors.red, surface1 = colors.surface1 }
+    return { fg = ts and not vim.tbl_isempty(ts) and colors.green or colors.red, bg = colors.surface1 }
   end,
   cond = conditions.hide_in_width,
 })
@@ -452,24 +452,18 @@ ins_right({
     end
 
     -- add formatter
-    local formatters = require('lvim.lsp.null-ls.formatters')
-    local supported_formatters = {}
-    for _, fmt in pairs(formatters.list_registered(buf_ft)) do
-      local _added_formatter = fmt
-      _added_formatter = string.sub(fmt, 1, 4)
-      table.insert(supported_formatters, _added_formatter)
+    local supported_formatters = require('null-ls.sources').get_supported(buf_ft, 'formatting')
+    table.sort(supported_formatters)
+    for _, fmt in pairs(supported_formatters) do
+      table.insert(buf_client_names,string.sub(fmt, 1, 4))
     end
-    vim.list_extend(buf_client_names, supported_formatters)
 
     -- add linter
-    local linters = require('lvim.lsp.null-ls.linters')
-    local supported_linters = {}
-    for _, lnt in pairs(linters.list_registered(buf_ft)) do
-      local _added_linter = lnt
-      _added_linter = string.sub(lnt, 1, 4)
-      table.insert(supported_linters, _added_linter)
+    local supported_linters = require('null-ls.sources').get_supported(buf_ft, 'diagnostics')
+    table.sort(supported_linters)
+    for _, lnt in pairs(supported_linters) do
+      table.insert(buf_client_names, string.sub(lnt, 1, 4))
     end
-    vim.list_extend(buf_client_names, supported_linters)
 
     if conditions.hide_small() then
       return lsp_icon .. table.concat(buf_client_names, ', ')
@@ -479,14 +473,14 @@ ins_right({
       return string.sub(only_lsp, 1, 5)
     end
   end,
-  color = { fg = colors.fg, surface1 = colors.surface1 },
+  color = { fg = colors.text, bg = colors.surface1 },
   cond = conditions.hide_in_width,
 })
 
 ins_right({
   'location',
   padding = 0,
-  color = { fg = colors.peach, surface1 = colors.surface1 },
+  color = { fg = colors.peach, bg = colors.surface1 },
 })
 
 ins_right({
@@ -511,21 +505,21 @@ ins_right({
     end
     return format_file_size(file)
   end,
-  color = { fg = colors.fg, surface1 = colors.surface1 },
+  color = { fg = colors.rosewater, bg = colors.surface1 },
   cond = conditions.buffer_not_empty and conditions.hide_small,
 })
 table.insert(config.sections.lualine_y, {
   'fileformat',
   fmt = string.upper,
   icons_enabled = true,
-  color = { fg = colors.green, surface1 = colors.surface1, gui = 'bold' },
+  color = { fg = colors.green, bg = colors.surface1, gui = 'bold' },
   cond = conditions.hide_small,
 })
 
 table.insert(config.sections.lualine_y, {
   clock,
   cond = conditions.hide_small,
-  color = { fg = colors.blue, surface1 = colors.surface1 },
+  color = { fg = colors.blue, bg = colors.surface1 },
 })
 
 table.insert(config.sections.lualine_z, {
@@ -538,7 +532,7 @@ table.insert(config.sections.lualine_z, {
     return chars[index]
   end,
   padding = 0,
-  color = { fg = colors.yellow, surface1 = colors.surface1 },
+  color = { fg = colors.yellow, bg = colors.surface1 },
   cond = nil,
 })
 

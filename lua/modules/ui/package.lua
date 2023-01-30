@@ -25,3 +25,9 @@ package({
   config = conf.lualine,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 })
+
+package({
+  'lewis6991/gitsigns.nvim',
+  event = { 'BufRead', 'BufNewFile' },
+  config = conf.gitsigns,
+})

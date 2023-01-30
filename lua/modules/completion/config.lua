@@ -11,6 +11,7 @@ function config.lspsaga()
       code_action = ' ',
       diagnostic = ' ',
       kind = {
+        Boolean = ' ',
         Class = ' ',
         Constant = ' ',
         Constructor = ' ',
