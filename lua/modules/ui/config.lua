@@ -20,4 +20,9 @@ function config.lualine()
   require('modules.ui.lualine')
 end
 
+function config.gitsigns()
+  require('modules.ui.gitsigns')
+end
+
+
 return config
