@@ -97,30 +97,6 @@ api.nvim_create_autocmd('FileType', {
 api.nvim_create_autocmd('ColorScheme', {
   group = my_group,
   callback = function()
-    vim.fn.sign_define('DapBreakpoint', {
-      text = '',
-      texthl = 'DiagnosticSignError',
-      linehl = '',
-      numhl = '',
-    })
-    vim.fn.sign_define('DapStopped', {
-      text = '',
-      texthl = 'DiagnosticSignWarn',
-      linehl = 'Visual',
-      numhl = 'DiagnosticSignWarn',
-    })
-    vim.fn.sign_define(
-      'DapBreakpointRejected',
-      { text = '', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' }
-    )
-    vim.fn.sign_define(
-      'DapBreakpointCondition',
-      { text = '', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' }
-    )
-    vim.fn.sign_define(
-      'DapLogPoint',
-      { text = '', texthl = 'DapLogPoint', linehl = 'DapLogPoint', numhl = 'DapLogPoint' }
-    )
     local statusline_hl = vim.api.nvim_get_hl_by_name('StatusLine', true)
     local cursorline_hl = vim.api.nvim_get_hl_by_name('CursorLine', true)
     local normal_hl = vim.api.nvim_get_hl_by_name('Normal', true)
@@ -147,11 +123,11 @@ api.nvim_create_autocmd('BufWinEnter', {
 api.nvim_create_autocmd('LspAttach', {
   group = my_group,
   callback = function(args)
-    if not args.data or args.data.client_id then
+    if not (args.data and args.data.client_id) then
       return
     end
 
-    local bufnr = args.buffer
+    local bufnr = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     require('lsp-inlayhints').on_attach(client, bufnr)
   end,
@@ -161,9 +137,3 @@ api.nvim_create_autocmd('LspAttach', {
 --     pattern = {'sql', 'mysql', 'plsql'},
 --     command = "lua require('cmp').setup.buffer()
 -- }
-api.nvim_create_autocmd({ 'VimEnter' }, {
-  group = my_group,
-  callback = function()
-    require('nvim-tree.api').tree.open()
-  end,
-})

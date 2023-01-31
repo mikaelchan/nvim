@@ -35,3 +35,9 @@ package({
   lazy = true,
   config = conf.lsp_lines,
 })
+
+package({
+  'lvimuser/lsp-inlayhints.nvim',
+  event = 'LspAttach',
+  config = conf.lsp_inlayhints,
+})

@@ -25,11 +25,15 @@ local vopts = {
 
 local vmappings = {
   ['/'] = { esc_cmd("lua require('Comment.api').toggle.linewise(vim.fn.visualmode())"), ' Comment' },
+  f = {
+    name = ' Search',
+    s = { cmd("lua require('telescope').extensions.live_grep_args.live_grep_args()"), 'String' },
+  },
 }
 
 local mappings = {
   ['/'] = { cmd("lua require('Comment.api').toggle.linewise.current()"), ' Comment' },
-  [';'] = { cmd('Alpha'), ' Dashboard' },
+  [';'] = { cmd('Dashboard'), ' Dashboard' },
   ['<leader>'] = { cmd("lua require('harpoon.ui').toggle_quick_menu()"), ' Harpoon' },
   ['1'] = { cmd("lua require('harpoon.ui').nav_file(1)"), ' goto1' },
   ['2'] = { cmd("lua require('harpoon.ui').nav_file(2)"), ' goto2' },
@@ -40,11 +44,12 @@ local mappings = {
   q = { cmd('confirm q'), ' Quit' },
   c = { cmd("lua require('modules.tools.buffer').kill()"), ' Close Buffer' },
   h = { cmd('nohlsearch'), ' No Highlight' },
-  I = { cmd("lua require('lsp-inlayhints').toggle()"), 'ﳟ Inlay Hints' },
+  i = { cmd("lua require('lsp-inlayhints').toggle()"), 'ﳟ Inlay Hints' },
   e = { cmd('NvimTreeToggle'), ' Explorer' },
   o = { cmd('Lspsaga outline'), ' Symbol Outline' },
+  v = { cmd("lua require('lsp_lines').toggle()"), '識LSP Lines' },
   b = {
-    name = '﬘ Buffers',
+    name = '﩯Buffers',
     ['1'] = { cmd('BufferLineGotToBuffer 1'), 'Goto 1' },
     ['2'] = { cmd('BufferLineGotToBuffer 2'), 'Goto 2' },
     ['3'] = { cmd('BufferLineGotToBuffer 3'), 'Goto 3' },
@@ -84,6 +89,20 @@ local mappings = {
     q = { cmd("lua require('dap').close()"), 'Close' },
     U = { cmd("lua require('dapui').toggle()"), 'UI toggle' },
   },
+  f = {
+    name = ' Search',
+    f = { cmd('Telescope find_files'), 'File' },
+    h = { cmd('Telescope help_tags'), 'Help' },
+    m = { cmd('Telescope man_pages'), 'Man Pages' },
+    o = { cmd('Telescope oldfiles'), 'Recent File' },
+    r = { cmd('Telescope registers'), 'Registers' },
+    t = { cmd('Telescope live_grep'), 'Text' },
+    k = { cmd('Telescope keymaps'), 'Keymaps' },
+    c = { cmd('Telescope commands'), 'Commands' },
+    e = { cmd('Telescope file_browser'), 'Browser' },
+    d = { cmd('Telescope dotfiles'), 'Dotfiles' },
+    s = { cmd('Telescope luasnip'), 'Snippets' },
+  },
   g = {
     name = ' Git',
     g = { cmd("lua require 'modules.tools.lazygit'.toggle()"), 'LazyGit' },
@@ -109,6 +128,8 @@ local mappings = {
     i = { cmd('LspInfo'), 'Info' },
     q = { cmd('Telescope quickfix'), 'Quickfix' },
     f = { cmd("lua require('modules.tools.formatter').format()"), 'Format' },
+    k = { cmd('Lspsaga incoming_calls'), 'Incoming calls' },
+    K = { cmd('Lspsaga outgoing_calls'), 'Outgoing calls' },
   },
   p = {
     name = ' Plugins',
@@ -119,7 +140,7 @@ local mappings = {
     x = { cmd('Lazy clean'), 'Clean' },
     l = { cmd('Lazy log'), 'Log' },
     p = { cmd('Lazy profile'), 'Profile' },
-    c = { cmd('lazy check'), 'Check' },
+    c = { cmd('Lazy check'), 'Check' },
   },
 }
 

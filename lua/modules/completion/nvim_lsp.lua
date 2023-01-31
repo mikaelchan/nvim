@@ -23,6 +23,11 @@ vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
   vim.diagnostic.reset(ns, bufnr)
   return true
 end
+
+local found, noice_util = pcall(require, 'noice.util')
+if found then
+  vim.lsp.handlers['textDocument/signatureHelp'] = noice_util.protect(require('noice.lsp').signature)
+end
 -- LSP Configurations
 local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()

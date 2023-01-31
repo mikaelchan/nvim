@@ -22,6 +22,7 @@ require('catppuccin').setup({
   },
   integrations = {
     cmp = true,
+    dashboard = true,
     fidget = true,
     lsp_trouble = true,
     lsp_saga = true,
@@ -72,13 +73,12 @@ require('catppuccin').setup({
     DiagnosticVirtualTextWarn = { bg = 'NONE' },
     DiagnosticVirtualTextInfo = { bg = 'NONE' },
     DiagnosticVirtualTextHint = { bg = 'NONE' },
-    LspInlayHint = { bg = colors.surface1 },
+    LspInlayHint = { fg = colors.subtext0, bg = colors.surface0},
     CmpBorder = { fg = colors.teal },
-  },
-  highlight_overriders = {
-    mocha = {
-      NormalFloat = { bg = 'NONE' },
-    },
+    DashboardIcon = { fg = colors.pink },
+    DashboardKey = { fg = colors.lavender },
+    DashboardDesc = { fg = colors.blue },
+    DashboardHeader = { fg = colors.maroon },
   },
 })
 

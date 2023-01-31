@@ -231,7 +231,7 @@ local config = {
   },
 }
 
-config.options.disabled_filetypes = { 'alpha' }
+config.options.disabled_filetypes = { 'dashboard' }
 
 -- Inserts a component in lualine_c at left section
 local function ins_left(component)

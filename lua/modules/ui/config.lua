@@ -41,4 +41,12 @@ function config.diffview()
   })
 end
 
+function config.dashboard()
+  require('modules.ui.dashboard')
+end
+
+function config.noice()
+  require('modules.ui.noice')
+end
+
 return config

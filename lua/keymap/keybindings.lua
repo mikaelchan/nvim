@@ -1,6 +1,6 @@
 local keymap = require('core.keymap')
 local nmap, omap, map = keymap.nmap, keymap.omap, keymap.map
-local silent, noremap = keymap.silent, keymap.noremap
+local silent, noremap  = keymap.silent, keymap.noremap
 local opts = keymap.new_opts(silent, noremap)
 local cmd = keymap.cmd
 
@@ -68,7 +68,7 @@ nmap({
   { 'K', cmd('Lspsaga hover_doc') },
   { 'ga', cmd('Lspsaga code_action') },
   { 'gd', cmd('Lspsaga peek_definition') },
-  { 'gs', cmd('Lspsaga signature_help') },
-  { 'gr', cmd('Lspsaga rename') },
+  { 'gD', cmd('Lspsaga goto_definition') },
+  { 'gr', cmd('Lspsaga rename ++project')},
   { 'gh', cmd('Lspsaga lsp_finder') },
 })

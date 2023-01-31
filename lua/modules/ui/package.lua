@@ -39,3 +39,11 @@ package({
   config = conf.diffview,
   dependencies = { 'nvim-lua/plenary.nvim' },
 })
+
+package({ 'glepnir/dashboard-nvim', event = 'VimEnter', config = conf.dashboard })
+package({
+  'folke/noice.nvim',
+  event = 'VeryLazy',
+  config = conf.noice,
+  dependencies = { 'rcarriga/nvim-notify', 'MunifTanjim/nui.nvim' },
+})

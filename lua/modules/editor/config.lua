@@ -135,4 +135,8 @@ function config.lsp_lines()
   require('lsp_lines').setup()
 end
 
+function config.lsp_inlayhints()
+  require('lsp-inlayhints').setup()
+end
+
 return config
