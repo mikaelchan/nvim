@@ -77,7 +77,7 @@ require('catppuccin').setup({
   },
   highlight_overriders = {
     mocha = {
-      NormalFloat = { bg = 'NONE'},
+      NormalFloat = { bg = 'NONE' },
     },
   },
 })

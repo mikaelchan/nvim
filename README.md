@@ -1,1 +1,1 @@
-My personal neovim configuration, built from [dope](https://github.com/glepnir/dope)
+My personal neovim configuration, generated from [dope](https://github.com/glepnir/dope)

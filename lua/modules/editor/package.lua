@@ -31,7 +31,7 @@ package({
 })
 
 package({
-    url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    lazy = true,
-    config = conf.lsp_lines,
-  })
+  url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+  lazy = true,
+  config = conf.lsp_lines,
+})

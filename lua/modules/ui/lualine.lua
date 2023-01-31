@@ -392,7 +392,7 @@ ins_left({
     return ''
   end,
   padding = { left = 0, right = 0 },
-  color = { fg = colors.surface1},
+  color = { fg = colors.surface1 },
   cond = nil,
 })
 
@@ -455,7 +455,7 @@ ins_right({
     local supported_formatters = require('null-ls.sources').get_supported(buf_ft, 'formatting')
     table.sort(supported_formatters)
     for _, fmt in pairs(supported_formatters) do
-      table.insert(buf_client_names,string.sub(fmt, 1, 4))
+      table.insert(buf_client_names, string.sub(fmt, 1, 4))
     end
 
     -- add linter
