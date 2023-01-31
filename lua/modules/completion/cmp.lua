@@ -42,7 +42,6 @@ local source_names = {
   emoji = '(Emoji)',
   path = '(Path)',
   calc = '(Calc)',
-  cmp_tabnine = '(Tabnine)',
   vsnip = '(Snippet)',
   luasnip = '(Snippet)',
   buffer = '(Buffer)',
@@ -218,7 +217,6 @@ cmp.setup({
 
     { name = 'path' },
     { name = 'luasnip' },
-    { name = 'cmp_tabnine' },
     { name = 'nvim_lua' },
     { name = 'buffer' },
     { name = 'calc' },

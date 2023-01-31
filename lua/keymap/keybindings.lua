@@ -62,8 +62,8 @@ nmap({
 
 -- set lspsaga keybindings
 nmap({
-  { '[e', cmd('Lspsaga diagnostic_jump_next') },
-  { ']e', cmd('Lspsaga diagnostic_jump_prev') },
+  { ']e', cmd('Lspsaga diagnostic_jump_next') },
+  { '[e', cmd('Lspsaga diagnostic_jump_prev') },
   { '[c', cmd('Lspsaga show_cursor_diagnostics') },
   { 'K', cmd('Lspsaga hover_doc') },
   { 'ga', cmd('Lspsaga code_action') },

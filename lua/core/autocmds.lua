@@ -125,7 +125,6 @@ api.nvim_create_autocmd('ColorScheme', {
     local cursorline_hl = vim.api.nvim_get_hl_by_name('CursorLine', true)
     local normal_hl = vim.api.nvim_get_hl_by_name('Normal', true)
     api.nvim_set_hl(0, 'CmpItemKindCopilot', { fg = '#6CC644' })
-    api.nvim_set_hl(0, 'CmpItemKindTabnine', { fg = '#CA42F0' })
     api.nvim_set_hl(0, 'CmpItemKindCrate', { fg = '#F64D00' })
     api.nvim_set_hl(0, 'CmpItemKindEmoji', { fg = '#FDE030' })
     api.nvim_set_hl(0, 'SLCopilot', { fg = '#6CC644', bg = statusline_hl.background })
@@ -162,3 +161,9 @@ api.nvim_create_autocmd('LspAttach', {
 --     pattern = {'sql', 'mysql', 'plsql'},
 --     command = "lua require('cmp').setup.buffer()
 -- }
+api.nvim_create_autocmd({ 'VimEnter' }, {
+  group = my_group,
+  callback = function()
+    require('nvim-tree.api').tree.open()
+  end,
+})

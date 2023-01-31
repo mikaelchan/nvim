@@ -31,3 +31,11 @@ package({
   event = { 'BufRead', 'BufNewFile' },
   config = conf.gitsigns,
 })
+
+package({
+  'sindrets/diffview.nvim',
+  lazy = true,
+  cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewFileHistory' },
+  config = conf.diffview,
+  dependencies = { 'nvim-lua/plenary.nvim' },
+})
