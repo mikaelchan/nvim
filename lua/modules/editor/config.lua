@@ -1,26 +1,7 @@
 local config = {}
 
 function config.nvim_treesitter()
-  vim.api.nvim_command('set foldmethod=expr')
-  vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
-  require('nvim-treesitter.configs').setup({
-    ensure_installed = 'all',
-    ignore_install = { 'phpdoc' },
-    highlight = {
-      enable = true,
-    },
-    textobjects = {
-      select = {
-        enable = true,
-        keymaps = {
-          ['af'] = '@function.outer',
-          ['if'] = '@function.inner',
-          ['ac'] = '@class.outer',
-          ['ic'] = '@class.inner',
-        },
-      },
-    },
-  })
+  require('modules.editor.treesitter')
 end
 
 function config.which_key()
@@ -137,6 +118,10 @@ end
 
 function config.lsp_inlayhints()
   require('lsp-inlayhints').setup()
+end
+
+function config.crates()
+  require('crates').setup()
 end
 
 return config

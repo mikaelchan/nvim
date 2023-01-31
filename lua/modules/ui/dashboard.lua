@@ -60,6 +60,12 @@ require('dashboard').setup({
         action = 'Telescope dotfiles path=' .. vim.env.HOME .. '/.dotfiles',
         shortcut = 'SPC f d',
       },
+      {
+        icon = '  ',
+        desc = 'Restore the last seesion                ',
+        action = "lua require('persistence').load({last=true})",
+        shortcut = 'SPC s l',
+      },
     },
     footer = {},
   },

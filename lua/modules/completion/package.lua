@@ -55,18 +55,30 @@ package({
 
 package({
   'hrsh7th/nvim-cmp',
-  event = 'InsertEnter',
+  event = {'InsertEnter', 'CmdlineEnter'},
   config = conf.nvim_cmp,
   dependencies = {
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-buffer' },
     { 'saadparwaiz1/cmp_luasnip' },
+    { 'hrsh7th/cmp-cmdline' },
   },
 })
-
-package({ 'L3MON4D3/LuaSnip', event = 'InsertCharPre', config = conf.lua_snip })
-
+package({ 'hrsh7th/cmp-nvim-lsp', lazy = true })
+package({ 'saadparwaiz1/cmp_luasnip', lazy = true })
+package({ 'hrsh7th/cmp-buffer', lazy = true })
+package({ 'hrsh7th/cmp-path', lazy = true })
+package({ 'hrsh7th/cmp-cmdline', lazy = true })
+package({
+  'L3MON4D3/LuaSnip',
+  event = 'InsertCharPre',
+  config = conf.lua_snip,
+  dependencies = {
+    'friendly-snippets',
+  },
+})
+package({ 'rafamadriz/friendly-snippets', lazy = true })
 package({ 'jose-elias-alvarez/null-ls.nvim', config = conf.null_ls })
 
 package({
@@ -81,3 +93,5 @@ package({
   after = { 'copilot.lua' },
   config = conf.copilot_cmp,
 })
+
+package({ 'b0o/schemastore.nvim', lazy = true })

@@ -304,3 +304,22 @@ cmp.setup({
     },
   },
 })
+
+local cmdline_opts = {
+  mapping = cmp.mapping.preset.cmdline({}),
+  sources = {
+    {
+      name = 'cmdline',
+    },
+    {
+      name = 'path',
+    },
+  },
+}
+cmdline_opts.window = {
+  completion = {
+    border = cmp_border,
+    winhighlight = 'Search:None',
+  },
+}
+cmp.setup.cmdline(':', cmdline_opts)

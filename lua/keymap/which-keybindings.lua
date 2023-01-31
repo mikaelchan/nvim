@@ -1,4 +1,5 @@
 local status_ok_which_key, which_key = pcall(require, 'which-key')
+local status_ok_which_key, which_key = pcall(require, 'which-key')
 if not status_ok_which_key then
   return
 end
@@ -25,10 +26,6 @@ local vopts = {
 
 local vmappings = {
   ['/'] = { esc_cmd("lua require('Comment.api').toggle.linewise(vim.fn.visualmode())"), ' Comment' },
-  f = {
-    name = ' Search',
-    s = { cmd("lua require('telescope').extensions.live_grep_args.live_grep_args()"), 'String' },
-  },
 }
 
 local mappings = {
@@ -43,22 +40,21 @@ local mappings = {
   w = { cmd('w!'), ' Save' },
   q = { cmd('confirm q'), ' Quit' },
   c = { cmd("lua require('modules.tools.buffer').kill()"), ' Close Buffer' },
-  h = { cmd('nohlsearch'), ' No Highlight' },
   i = { cmd("lua require('lsp-inlayhints').toggle()"), 'ﳟ Inlay Hints' },
   e = { cmd('NvimTreeToggle'), ' Explorer' },
   o = { cmd('Lspsaga outline'), ' Symbol Outline' },
   v = { cmd("lua require('lsp_lines').toggle()"), '識LSP Lines' },
   b = {
     name = '﩯Buffers',
-    ['1'] = { cmd('BufferLineGotToBuffer 1'), 'Goto 1' },
-    ['2'] = { cmd('BufferLineGotToBuffer 2'), 'Goto 2' },
-    ['3'] = { cmd('BufferLineGotToBuffer 3'), 'Goto 3' },
-    ['4'] = { cmd('BufferLineGotToBuffer 4'), 'Goto 4' },
-    ['5'] = { cmd('BufferLineGotToBuffer 5'), 'Goto 5' },
-    ['6'] = { cmd('BufferLineGotToBuffer 6'), 'Goto 6' },
-    ['7'] = { cmd('BufferLineGotToBuffer 7'), 'Goto 7' },
-    ['8'] = { cmd('BufferLineGotToBuffer 8'), 'Goto 8' },
-    ['9'] = { cmd('BufferLineGotToBuffer 9'), 'Goto 9' },
+    ['1'] = { cmd('BufferLineGoToBuffer 1'), 'Goto 1' },
+    ['2'] = { cmd('BufferLineGoToBuffer 2'), 'Goto 2' },
+    ['3'] = { cmd('BufferLineGoToBuffer 3'), 'Goto 3' },
+    ['4'] = { cmd('BufferLineGoToBuffer 4'), 'Goto 4' },
+    ['5'] = { cmd('BufferLineGoToBuffer 5'), 'Goto 5' },
+    ['6'] = { cmd('BufferLineGoToBuffer 6'), 'Goto 6' },
+    ['7'] = { cmd('BufferLineGoToBuffer 7'), 'Goto 7' },
+    ['8'] = { cmd('BufferLineGoToBuffer 8'), 'Goto 8' },
+    ['9'] = { cmd('BufferLineGoToBuffer 9'), 'Goto 9' },
     c = { cmd('BufferLinePickClose'), 'Close buffer' },
     p = { cmd('BufferLineTogglePin'), 'Toggle pin' },
     j = { cmd('BufferLinePick'), 'Jump buffer' },
@@ -101,7 +97,8 @@ local mappings = {
     c = { cmd('Telescope commands'), 'Commands' },
     e = { cmd('Telescope file_browser'), 'Browser' },
     d = { cmd('Telescope dotfiles'), 'Dotfiles' },
-    s = { cmd('Telescope luasnip'), 'Snippets' },
+    p = { cmd('Telescope luasnip'), 'Snippets' },
+    s = { cmd("lua require('telescope').extensions.live_grep_args.live_grep_args()"), 'String' },
   },
   g = {
     name = ' Git',
@@ -141,6 +138,18 @@ local mappings = {
     l = { cmd('Lazy log'), 'Log' },
     p = { cmd('Lazy profile'), 'Profile' },
     c = { cmd('Lazy check'), 'Check' },
+  },
+  r = {
+    name = ' Replace',
+    f = { cmd("lua require('spectre').open_file_search()"), 'Current Buffer' },
+    p = { cmd("lua require('spectre').open()"), 'Project' },
+    w = { cmd("lua require('spectre').open_visual({select_word=true})"), 'Word' },
+  },
+  s = {
+    name = ' Session',
+    s = { cmd("lua require('persistence').load()"), 'Restore for current dir' },
+    l = { cmd("lua require('persistence').load({last=true})"), 'Restore last session' },
+    d = { cmd("lua require('presistence').stop()"), 'Stop persistence' },
   },
 }
 

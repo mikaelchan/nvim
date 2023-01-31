@@ -52,3 +52,4 @@ end
 
 lspconfig.gopls.setup(require('modules.completion.lsp.gopls'))
 lspconfig.sumneko_lua.setup(require('modules.completion.lsp.sumneko_lua'))
+lspconfig.jsonls.setup(require('modules.completion.lsp.jsonls'))

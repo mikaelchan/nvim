@@ -46,6 +46,12 @@ end
 function config.lua_snip()
   local ls = require('luasnip')
   local types = require('luasnip.util.types')
+  local helper = require('core.helper')
+  local paths = {
+    helper.path_join(vim.fn.stdpath('data'), 'site', 'pack', 'lazy', 'opt', 'friendly-snippets'),
+    helper.path_join(vim.fn.stdpath('config'), 'snippets'),
+  }
+
   ls.config.set_config({
     history = true,
     enable_autosnippets = true,
@@ -58,11 +64,11 @@ function config.lua_snip()
       },
     },
   })
-  require('luasnip.loaders.from_lua').lazy_load({ paths = vim.fn.stdpath('config') .. '/snippets' })
-  require('luasnip.loaders.from_vscode').lazy_load()
+  require('luasnip.loaders.from_lua').lazy_load()
   require('luasnip.loaders.from_vscode').lazy_load({
-    paths = { './snippets/' },
+    paths = paths,
   })
+  require('luasnip.loaders.from_snipmate').lazy_load()
 end
 
 function config.null_ls()

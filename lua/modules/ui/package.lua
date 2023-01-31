@@ -47,3 +47,41 @@ package({
   config = conf.noice,
   dependencies = { 'rcarriga/nvim-notify', 'MunifTanjim/nui.nvim' },
 })
+
+package({
+  'kevinhwang91/nvim-hlslens',
+  config = conf.hlslens,
+  event = 'BufReadPost',
+})
+
+package({
+  'norcalli/nvim-colorizer.lua',
+  config = conf.colorozer,
+  event = 'BufReadPre',
+})
+
+package({ 'mrjones2014/nvim-ts-rainbow' })
+
+package({
+  'lukas-reineke/indent-blankline.nvim',
+  config = conf.indent_blankline,
+})
+
+package({
+  'stevearc/dressing.nvim',
+  lazy = true,
+  config = conf.dressing,
+  event = 'BufWinEnter',
+})
+
+package({ 'nvim-lua/popup.nvim' })
+
+package({ 'mtdl9/vim-log-highlighting', ft = { 'text', 'log' } })
+
+package({
+  'm-demare/hlargs.nvim',
+  lazy = true,
+  event = 'VeryLazy',
+  config = conf.hlargs,
+  dependencies = { 'nvim-treesitter/nvim-treesitter' },
+})

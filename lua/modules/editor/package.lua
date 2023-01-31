@@ -10,7 +10,10 @@ package({
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
 })
-
+package({
+  'JoosepAlviste/nvim-ts-context-commentstring',
+  event = 'VeryLazy',
+})
 package({
   'folke/which-key.nvim',
   event = 'VeryLazy',
@@ -41,3 +44,12 @@ package({
   event = 'LspAttach',
   config = conf.lsp_inlayhints,
 })
+
+package({ 'raimon49/requirements.txt.vim', event = 'VeryLazy' })
+
+package({
+    "saecki/crates.nvim",
+    event = { "BufRead Cargo.toml" },
+    dependencies = { { "nvim-lua/plenary.nvim" } },
+config = conf.crates,
+  })
