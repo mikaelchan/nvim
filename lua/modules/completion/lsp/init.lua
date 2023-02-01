@@ -9,7 +9,7 @@ M.setup_codelens_refresh = function(client, bufnr)
   end
   local group = 'LspCodeLensRefresh'
   local events = { 'BufEnter', 'InsertLeave' }
-  local ok, autocmds = pcall(vim.api.nvim_get_autocmd({ group = group, buffer = bufnr, events = events }))
+  local ok, autocmds = pcall(vim.api.nvim_get_autocmds, { group = group, buffer = bufnr, event = events })
   if ok and #autocmds > 0 then
     return
   end

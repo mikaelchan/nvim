@@ -55,7 +55,7 @@ require('catppuccin').setup({
     },
     indent_blankline = {
       enabled = true,
-      colored_indent_levels = false,
+      colored_indent_levels = true,
     },
     gitsigns = true,
     notify = true,
@@ -83,12 +83,6 @@ require('catppuccin').setup({
     DashboardKey = { fg = colors.lavender },
     DashboardDesc = { fg = colors.blue },
     DashboardHeader = { fg = colors.maroon },
-    IndentBlanklineIndent1 = { fg = colors.red },
-    IndentBlanklineIndent2 = { fg = colors.peach },
-    IndentBlanklineIndent3 = { fg = colors.yellow },
-    IndentBlanklineIndent4 = { fg = colors.green },
-    IndentBlanklineIndent5 = { fg = colors.sky },
-    IndentBlanklineIndent6 = { fg = colors.blue },
   },
 })
 
