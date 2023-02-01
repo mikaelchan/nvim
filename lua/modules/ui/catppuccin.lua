@@ -28,9 +28,12 @@ require('catppuccin').setup({
     lsp_saga = true,
     telescope = true,
     treesitter = true,
+    treesitter_context = true,
+    ts_rainbow = true,
     mason = false,
     neotest = true,
     noice = true,
+    harpoon = true,
     native_lsp = {
       enabled = true,
       virtual_text = {
@@ -59,6 +62,7 @@ require('catppuccin').setup({
     nvimtree = true,
     neotree = false,
     overseer = true,
+    illuminate = true,
     symbols_outline = false,
     which_key = true,
     leap = false,

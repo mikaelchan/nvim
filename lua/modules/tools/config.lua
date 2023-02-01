@@ -149,4 +149,34 @@ function config.comment()
   require('modules.tools.comment')
 end
 
+function config.neotest()
+  require('modules.tools.neotest')
+end
+
+function config.neoclip()
+  require('neoclip').setup({
+    history = 50,
+    enable_persistent_history = true,
+    db_path = vim.fn.stdpath('data') .. '/neoclip.sqlite3',
+    keys = {
+      telescope = {
+        i = { select = '<c-p>', paste = '<CR>', paste_behind = '<c-k>' },
+        n = { select = 'p', paste = '<CR>', paste_behind = 'P' },
+      },
+    },
+  })
+end
+
+function config.cheat()
+  vim.g.cheat_default_window_layout = 'vertical_split'
+end
+
+function config.overseer()
+  require('modules.tools.overseer')
+end
+
+function config.remember()
+  require('remember').setup({})
+end
+
 return config

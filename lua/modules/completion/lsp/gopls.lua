@@ -2,10 +2,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local mappings = {}
-mappings['lV'] = {
-  "<Cmd>lua require('modules.tools.govet').toggle()<CR>",
-  'Go Vet',
-}
 mappings['lI'] = { '<cmd>GoInstallDeps<cr>', 'Install Dependencies' }
 mappings['lT'] = { '<cmd>GoMod tidy<cr>', 'Tidy' }
 mappings['lt'] = { '<cmd>GoTestAdd<cr>', 'Add Test' }

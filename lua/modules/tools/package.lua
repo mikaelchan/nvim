@@ -100,3 +100,43 @@ package({
   'ThePrimeagen/harpoon',
   dependencies = { { 'nvim-lua/plenary.nvim' }, { 'nvim-lua/popup.nvim' } },
 })
+
+package({
+  'nvim-neotest/neotest',
+  config = conf.neotest,
+  dependencies = { { 'nvim-neotest/neotest-plenary' } },
+  event = { 'BufReadPost', 'BufNew' },
+})
+
+package({ 'nvim-neotest/neotest-go', event = { 'BufEnter *.go' } })
+
+package({ 'nvim-neotest/neotest-python', event = { 'BufEnter *.py' } })
+
+package({ 'rouge8/neotest-rust', event = { 'BufEnter *.rs' } })
+
+package({
+  'AckslD/nvim-neoclip.lua',
+  config = conf.neoclip,
+  lazy = true,
+  cmd = {'Telescope neoclip'},
+  dependencies = { { 'kkharji/sqlite.lua' }, { 'nvim-telescope/telescope.nvim' } },
+})
+
+package({
+  'RishabhRD/nvim-cheat.sh',
+  dependencies = 'RishabhRD/popfix',
+  lazy = true,
+  config = conf.cheat,
+  cmd = { 'Cheat', 'CheatWithoutComments', 'CheatList', 'CheatListWithoutComments' },
+})
+
+package({
+  'stevearc/overseer.nvim',
+  lazy = true,
+  config = conf.overseer,
+})
+
+package({
+    "vladdoster/remember.nvim",
+config = conf.remember,
+  })
