@@ -11,6 +11,15 @@ mappings['lg'] = { '<cmd>GoGenerate<cr>', 'Generate' }
 mappings['lF'] = { '<cmd>GoGenerate %<cr>', 'Generate File' }
 mappings['lc'] = { '<cmd>GoCmt<cr>', 'Comment' }
 mappings['dT'] = { "<cmd>lua require('dap-go').debug_test()<cr>", 'Debug Test' }
+mappings['lb'] = {
+  "<cmd>lua require('modules.tools.terminal').exec_toggle({cmd='go build -v .;read',count=2,direction='float'})<cr>",
+  'Build',
+}
+mappings['r'] = {
+  "<cmd>lua require('modules.tools.terminal').exec_toggle({cmd='go run .;read',count=2,direction='float'})<cr>",
+  'Run',
+}
+
 local opts = {
   mode = 'n',
   prefix = '<leader>',

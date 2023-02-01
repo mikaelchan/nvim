@@ -53,3 +53,7 @@ end
 lspconfig.gopls.setup(require('modules.completion.lsp.gopls'))
 lspconfig.sumneko_lua.setup(require('modules.completion.lsp.sumneko_lua'))
 lspconfig.jsonls.setup(require('modules.completion.lsp.jsonls'))
+lspconfig.rust_analyzer.setup(require('modules.completion.lsp.rust_analyzer'))
+lspconfig.pyright.setup(require('modules.completion.lsp.pyright'))
+lspconfig.taplo.setup(require('modules.completion.lsp.taplo'))
+lspconfig.yamlls.setup(require('modules.completion.lsp.yamlls'))

@@ -118,7 +118,6 @@ package({
   'AckslD/nvim-neoclip.lua',
   config = conf.neoclip,
   lazy = true,
-  cmd = {'Telescope neoclip'},
   dependencies = { { 'kkharji/sqlite.lua' }, { 'nvim-telescope/telescope.nvim' } },
 })
 
@@ -130,13 +129,25 @@ package({
   cmd = { 'Cheat', 'CheatWithoutComments', 'CheatList', 'CheatListWithoutComments' },
 })
 
+package({ 'stevearc/overseer.nvim', config = conf.overseer })
+
+package({ 'vladdoster/remember.nvim', config = conf.remember })
+
 package({
-  'stevearc/overseer.nvim',
-  lazy = true,
-  config = conf.overseer,
+  'andymass/vim-matchup',
+  event = 'BufReadPost',
+  config = conf.matchup,
 })
 
 package({
-    "vladdoster/remember.nvim",
-config = conf.remember,
-  })
+  'simrat39/rust-tools.nvim',
+  lazy = true,
+  config = conf.rust_tools,
+  ft = { 'rust', 'rs' },
+})
+
+package({
+  'Civitasv/cmake-tools.nvim',
+config = conf.cmake_tools,
+  ft = { 'c', 'cpp', 'objc', 'objcpp', 'h', 'hpp' },
+})

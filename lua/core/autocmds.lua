@@ -132,8 +132,14 @@ api.nvim_create_autocmd('LspAttach', {
     require('lsp-inlayhints').on_attach(client, bufnr)
   end,
 })
--- api.nvim_create_autocmd('FileType', {
---     group = my_group,
---     pattern = {'sql', 'mysql', 'plsql'},
---     command = "lua require('cmp').setup.buffer()
--- }
+api.nvim_create_autocmd('FileType', {
+  group = my_group,
+  pattern = { 'sql', 'mysql', 'plsql' },
+  command = "lua require('cmp').setup.buffer { sources = { { name = 'vim-dadbod-completion' } } }",
+})
+
+api.nvim_create_autocmd('FileType', {
+  group = my_group,
+  pattern = 'toml',
+  command = "lua require('cmp').setup.buffer { sources = { { name = 'crates' } } }",
+})

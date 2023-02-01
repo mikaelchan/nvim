@@ -160,8 +160,8 @@ function config.neoclip()
     db_path = vim.fn.stdpath('data') .. '/neoclip.sqlite3',
     keys = {
       telescope = {
-        i = { select = '<c-p>', paste = '<CR>', paste_behind = '<c-k>' },
-        n = { select = 'p', paste = '<CR>', paste_behind = 'P' },
+        i = { select = '<cr>', paste = '<c-p>', paste_behind = '<c-[>' },
+        n = { select = '<cr>', paste = 'p', paste_behind = 'P' },
       },
     },
   })
@@ -177,6 +177,75 @@ end
 
 function config.remember()
   require('remember').setup({})
+end
+
+function config.matchup()
+  vim.g.matchup_enabled = 1
+  vim.g.matchup_surround_enabled = 1
+  vim.g.matchup_matchparen_deferred = 1
+  vim.g.matchup_matchparen_offscreen = {
+    method = 'popup',
+  }
+end
+
+function config.rust_tools()
+  local path = vim.fn.expand('~/.vscode/extensions/vadimcn.vscode-lldb-1.8.1')
+  local codelldb_path = path .. 'adapter/codelldb'
+  local liblldb_path = path .. 'lldb/lib/liblldb.so'
+  if vim.fn.has('mac') then
+    liblldb_path = path .. 'lldb/lib/liblldb.dylib'
+  end
+
+  require('rust-tools').setup({
+    tools = {
+      executor = require('rust-tools/executors').termopen, -- can be quickfix or termopen
+      reload_workspace_from_cargo_toml = true,
+      inlay_hints = {
+        auto = false,
+      },
+      hover_actions = {
+        border = {
+          { '╭', 'FloatBorder' },
+          { '─', 'FloatBorder' },
+          { '╮', 'FloatBorder' },
+          { '│', 'FloatBorder' },
+          { '╯', 'FloatBorder' },
+          { '─', 'FloatBorder' },
+          { '╰', 'FloatBorder' },
+          { '│', 'FloatBorder' },
+        },
+        auto_focus = true,
+      },
+    },
+    server = {
+      settings = {
+        ['rust-analyzer'] = {
+          inlayHints = { locationLinks = false },
+        },
+      },
+    },
+    dap = {
+      adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path),
+    },
+  })
+end
+
+function config.cmake_tools()
+  require('cmake_tools').setup({
+    cmake_command = 'cmake',
+    cmake_build_directory = 'build',
+    cmake_generate_options = { '-D', 'CMAKE_EXPORT_COMPILE_COMMANDS=1' },
+    cmake_build_options = {},
+    cmake_console_size = 10, -- cmake output window height
+    cmake_show_console = 'always', -- "always", "only_on_error"
+    cmake_dap_configuration = { name = 'cpp', type = 'codelldb', request = 'launch' }, -- dap configuration, optional
+    ---@diagnostic disable-next-line: different-requires
+    cmake_dap_open_command = require('dap').repl.open, -- optional
+    cmake_variants_message = {
+      short = { show = true },
+      long = { show = true, max_length = 40 },
+    },
+  })
 end
 
 return config

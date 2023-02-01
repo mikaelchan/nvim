@@ -203,4 +203,20 @@ function config.hlargs()
   require('hlargs').setup()
 end
 
+function config.dadbod_ui()
+  vim.g.db_ui_use_nerd_fonts = 1
+  vim.g.db_ui_show_database_icon = 1
+end
+
+function config.neoscroll()
+  require('neoscroll').setup({
+    easing_function = 'quadratic',
+    hide_cursor = true,
+  })
+end
+
+function config.zen_mode()
+  require('modules.ui.zen_mode')
+end
+
 return config

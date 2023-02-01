@@ -20,7 +20,7 @@ function config.which_key()
         windows = false,
         nav = false,
         z = true,
-        g = false,
+        g = true,
       },
     },
     operators = {},

@@ -85,3 +85,22 @@ package({
   config = conf.hlargs,
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
 })
+
+package({
+  'kristijanhusak/vim-dadbod-ui',
+  cmd = { 'DBUIToggle', 'DBUIAddConnection', 'DBUI', 'DBUIFindBuffer', 'DBUIRenameBuffer' },
+  init = conf.dadbod_ui,
+
+  dependencies = { {
+    'tpope/vim-dadbod',
+    lazy = true,
+  } },
+  lazy = true,
+})
+
+package({
+  'karb94/neoscroll.nvim',
+  config = conf.neoscroll,
+  event = 'BufRead',
+})
+

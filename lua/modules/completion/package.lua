@@ -55,7 +55,7 @@ package({
 
 package({
   'hrsh7th/nvim-cmp',
-  event = {'InsertEnter', 'CmdlineEnter'},
+  event = { 'InsertEnter', 'CmdlineEnter' },
   config = conf.nvim_cmp,
   dependencies = {
     { 'hrsh7th/cmp-nvim-lsp' },
@@ -95,3 +95,18 @@ package({
 })
 
 package({ 'b0o/schemastore.nvim', lazy = true })
+
+package({
+  'vuki656/package-info.nvim',
+  config = conf.package_info,
+  lazy = true,
+  event = { 'BufReadPre', 'BufNew' },
+})
+
+package({ 'kristijanhusak/vim-dadbod-completion' })
+
+package({
+  'p00f/clangd_extensions.nvim',
+  config = conf.clangd_extensions,
+  ft = { 'c', 'cpp', 'objc', 'objcpp', 'h', 'hpp' },
+})
