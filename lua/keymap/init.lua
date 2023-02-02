@@ -20,7 +20,7 @@ imap({
   -- Select all
   { '<C-a>', '<Esc>ggVG', opts },
   -- Newline
-  { '<S-j>', '<Esc>o', opts },
+  { '<S-Cr>', '<Esc>o', opts },
 })
 
 nmap({

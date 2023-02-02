@@ -1,8 +1,5 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-local feedkeys = function(key, mode)
-  return vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
 local kind_icons = {
   Array = '',
   Boolean = '',
@@ -255,7 +252,7 @@ cmp.setup({
         -- cmp.complete()
         fallback()
       else
-        feedkeys('<Plug>(Tabout)', '')
+        fallback()
       end
     end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
@@ -264,7 +261,7 @@ cmp.setup({
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
-        feedkeys('<Plug>(Tabout)', '')
+        fallback()
       end
     end, { 'i', 's' }),
     ['<C-Space>'] = cmp.mapping.complete(),
