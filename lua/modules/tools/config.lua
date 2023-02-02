@@ -248,4 +248,19 @@ function config.cmake_tools()
   })
 end
 
+function config.tabout()
+  require('tabout').setup({
+    completion = false,
+    ignore_beginning = false,
+    tabouts = {
+      { open = "'", close = "'" },
+      { open = '"', close = '"' },
+      { open = '`', close = '`' },
+      { open = '(', close = ')' },
+      { open = '[', close = ']' },
+      { open = '{', close = '}' },
+    },
+  })
+end
+
 return config

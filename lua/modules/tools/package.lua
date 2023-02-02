@@ -148,6 +148,11 @@ package({
 
 package({
   'Civitasv/cmake-tools.nvim',
-config = conf.cmake_tools,
+  config = conf.cmake_tools,
   ft = { 'c', 'cpp', 'objc', 'objcpp', 'h', 'hpp' },
+})
+
+package({
+  'abecodes/tabout.nvim',
+  config = conf.tabout,
 })

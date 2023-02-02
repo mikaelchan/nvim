@@ -387,23 +387,6 @@ ins_left({
   },
 })
 
-ins_left({
-  function()
-    return ''
-  end,
-  padding = { left = 0, right = 0 },
-  color = { fg = colors.surface1 },
-  cond = nil,
-})
-
-ins_right({
-  function()
-    return ''
-  end,
-  padding = { left = 0, right = 0 },
-  color = { fg = colors.surface1 },
-  cond = nil,
-})
 
 ins_right({
   'diagnostics',

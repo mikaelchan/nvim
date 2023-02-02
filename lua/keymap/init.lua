@@ -19,6 +19,8 @@ imap({
   { 'jk', '<Esc>', opts },
   -- Select all
   { '<C-a>', '<Esc>ggVG', opts },
+  -- Newline
+  { '<S-j>', '<Esc>o', opts },
 })
 
 nmap({

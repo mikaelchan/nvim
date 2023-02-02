@@ -81,18 +81,18 @@ package({
 package({ 'rafamadriz/friendly-snippets', lazy = true })
 package({ 'jose-elias-alvarez/null-ls.nvim', config = conf.null_ls })
 
-package({
-  'zbirenbaum/copilot.lua',
-  event = 'InsertEnter',
-  dependencies = { 'zbirenbaum/copilot-cmp', 'nvim-cmp' },
-  config = conf.copilot,
-})
+-- package({
+--   'zbirenbaum/copilot.lua',
+--   event = 'InsertEnter',
+--   dependencies = { 'zbirenbaum/copilot-cmp', 'nvim-cmp' },
+--   config = conf.copilot,
+-- })
 
-package({
-  'zbirenbaum/copilot-cmp',
-  after = { 'copilot.lua' },
-  config = conf.copilot_cmp,
-})
+-- package({
+--   'zbirenbaum/copilot-cmp',
+--   after = { 'copilot.lua' },
+--   config = conf.copilot_cmp,
+-- })
 
 package({ 'b0o/schemastore.nvim', lazy = true })
 

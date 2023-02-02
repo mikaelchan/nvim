@@ -83,6 +83,7 @@ require('catppuccin').setup({
     DashboardKey = { fg = colors.lavender },
     DashboardDesc = { fg = colors.blue },
     DashboardHeader = { fg = colors.maroon },
+    IndentBlanklineSpaceChar = { fg = colors.subtext0 },
   },
 })
 

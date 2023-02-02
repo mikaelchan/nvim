@@ -15,7 +15,7 @@ mappings['lb'] = {
   "<cmd>lua require('modules.tools.terminal').exec_toggle({cmd='go build -v .;read',count=2,direction='float'})<cr>",
   'Build',
 }
-mappings['r'] = {
+mappings['lr'] = {
   "<cmd>lua require('modules.tools.terminal').exec_toggle({cmd='go run .;read',count=2,direction='float'})<cr>",
   'Run',
 }
