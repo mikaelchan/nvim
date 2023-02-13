@@ -68,3 +68,4 @@ xmap({
   { '<A-j>', cmd("move '>+1") .. 'gv-gv', opts },
   { '<A-k>', cmd("move '<-2") .. 'gv-gv', opts },
 })
+

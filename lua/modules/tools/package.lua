@@ -152,3 +152,7 @@ package({
   ft = { 'c', 'cpp', 'objc', 'objcpp', 'h', 'hpp' },
 })
 
+package({
+  'abecodes/tabout.nvim',
+  config = conf.tabout,
+})
