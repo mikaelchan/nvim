@@ -110,15 +110,15 @@ api.nvim_create_autocmd('ColorScheme', {
   end,
 })
 
--- api.nvim_create_autocmd('BufWinEnter', {
---   group = my_group,
---   pattern = '*.md',
---   desc = 'beautify markdown',
---   callback = function()
---     vim.cmd([[set syntax=markdown]])
---     require('modules.tools.markdown_syn').set_syntax()
---   end,
--- })
+api.nvim_create_autocmd('BufWinEnter', {
+  group = my_group,
+  pattern = '*.md',
+  desc = 'beautify markdown',
+  callback = function()
+    vim.cmd([[set syntax=markdown]])
+    require('modules.tools.markdown_syn').set_syntax()
+  end,
+})
 
 api.nvim_create_autocmd('LspAttach', {
   group = my_group,
