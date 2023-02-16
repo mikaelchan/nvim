@@ -51,9 +51,11 @@ for _, server in ipairs(autoConfigServers) do
 end
 
 lspconfig.gopls.setup(require('modules.completion.lsp.gopls'))
-lspconfig.sumneko_lua.setup(require('modules.completion.lsp.sumneko_lua'))
+lspconfig.lua_ls.setup(require('modules.completion.lsp.lua_ls'))
 lspconfig.jsonls.setup(require('modules.completion.lsp.jsonls'))
 lspconfig.rust_analyzer.setup(require('modules.completion.lsp.rust_analyzer'))
 lspconfig.pyright.setup(require('modules.completion.lsp.pyright'))
 lspconfig.taplo.setup(require('modules.completion.lsp.taplo'))
 lspconfig.yamlls.setup(require('modules.completion.lsp.yamlls'))
+
+require('lspconfig.ui.windows').default_options.border = 'rounded'
