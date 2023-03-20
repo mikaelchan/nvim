@@ -9,6 +9,14 @@ api.nvim_create_autocmd('BufWritePre', {
   end,
 })
 
+api.nvim_create_autocmd('BufWritePre', {
+  group = my_group,
+  pattern = { '*.go' },
+  callback = function()
+    require('modules.tools.formatter').format()
+  end,
+})
+
 api.nvim_create_autocmd('BufRead', {
   group = my_group,
   pattern = '*.conf',

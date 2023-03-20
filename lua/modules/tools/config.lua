@@ -33,6 +33,10 @@ function config.dap()
   require('modules.tools.dap')
 end
 
+function config.dap_ui()
+  require('dapui').setup({})
+end
+
 function config.hop()
   require('hop').setup({})
 end

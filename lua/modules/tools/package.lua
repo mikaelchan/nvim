@@ -27,6 +27,10 @@ package({
 
 package({
   'rcarriga/nvim-dap-ui',
+  dependencies = {
+    { 'mfussenegger/nvim-dap' },
+  },
+  config = conf.dap_ui,
 })
 package({
   'phaazon/hop.nvim',
