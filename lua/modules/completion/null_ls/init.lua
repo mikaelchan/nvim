@@ -23,6 +23,7 @@ local sources = {
   nls.builtins.formatting.scalafmt,
   nls.builtins.formatting.sqlformat,
   nls.builtins.formatting.terraform_fmt,
+  nls.builtins.formatting.rustfmt,
   -- Support for nix files
   nls.builtins.formatting.alejandra,
   nls.builtins.formatting.shfmt.with({ extra_args = { '-i', '2', '-ci' } }),

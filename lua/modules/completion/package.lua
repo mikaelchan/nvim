@@ -48,7 +48,7 @@ package({
 
 package({
   'glepnir/lspsaga.nvim',
-  ft = enable_lsp_filetype,
+  event = "LspAttach", 
   config = conf.lspsaga,
   dependencies = { { 'nvim-tree/nvim-web-devicons' } },
 })

@@ -75,7 +75,7 @@ noice.setup({
   },
   presets = {
     bottom_search = false, -- use a classic bottom cmdline for search
-    command_palette = false, -- position the cmdline and popupmenu together
+    command_palette = true, -- position the cmdline and popupmenu together
     long_message_to_split = true, -- long messages will be sent to a split
     inc_rename = false, -- enables an input dialog for inc-rename.nvim
     lsp_doc_border = true, -- add a border to hover docs and signature help
@@ -84,8 +84,9 @@ noice.setup({
     enabled = true,
     view_search = false,
   },
-  history  = {view = 'popup'},
+  history = { view = 'popup' },
   cmdline = {
+    enabled = true,
     format = {
       filter = { pattern = '^:%s*!', icon = '󰘳 ', ft = 'sh' },
       search_down = { icon = ' ' },
@@ -127,7 +128,8 @@ noice.setup({
     },
   },
   popupmenu = {
-    enabled = false,
+    enabled = true,
+    backend = 'cmp',
   },
   routes = {
     {
@@ -193,13 +195,13 @@ noice.setup({
       opts = { skip = true },
     },
     {
-        view = "popup",
-        filter = {
-          any = {
-            { event = "msg_history_show" },
-            { event = "msg_show", min_height = 10 },
-          },
+      view = 'popup',
+      filter = {
+        any = {
+          { event = 'msg_history_show' },
+          { event = 'msg_show', min_height = 10 },
         },
       },
+    },
   },
 })

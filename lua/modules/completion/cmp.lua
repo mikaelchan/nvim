@@ -82,7 +82,6 @@ cmp.setup({
   },
   formatting = {
     fields = { 'abbr', 'kind', 'menu' },
-
     format = function(entry, vim_item)
       vim_item.kind = kind_icons[vim_item.kind]
 
@@ -170,7 +169,7 @@ cmp.setup({
       elseif luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
       else
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(Tabout)", true, true, true), "")
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>(Tabout)', true, true, true), '')
       end
     end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
@@ -179,7 +178,7 @@ cmp.setup({
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(Tabout)", true, true, true), "")
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>(Tabout)', true, true, true), '')
       end
     end, { 'i', 's' }),
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -204,7 +203,7 @@ cmp.setup({
     end),
   }),
   cmdline = {
-    enable = true,
+    enable = false,
     options = {
       {
         type = ':',
@@ -212,6 +211,10 @@ cmp.setup({
           { name = 'path' },
           { name = 'cmdline' },
         },
+        completion = {
+          border = cmp_border,
+        },
+        mapping = cmp.mapping.preset.cmdline({}),
       },
       {
         type = { '/', '?' },
@@ -222,22 +225,3 @@ cmp.setup({
     },
   },
 })
-
-local cmdline_opts = {
-  mapping = cmp.mapping.preset.cmdline({}),
-  sources = {
-    {
-      name = 'cmdline',
-    },
-    {
-      name = 'path',
-    },
-  },
-}
-cmdline_opts.window = {
-  completion = {
-    border = cmp_border,
-    winhighlight = 'Search:None',
-  },
-}
-cmp.setup.cmdline(':', cmdline_opts)

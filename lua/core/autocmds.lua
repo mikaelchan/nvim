@@ -11,7 +11,7 @@ api.nvim_create_autocmd('BufWritePre', {
 
 api.nvim_create_autocmd('BufWritePre', {
   group = my_group,
-  pattern = { '*.go' },
+  pattern = '*.c,*.cpp,*.lua,*.go,*.rs,*.py,*.ts,*.tsx',
   callback = function()
     require('modules.tools.formatter').format()
   end,
