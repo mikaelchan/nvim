@@ -197,7 +197,6 @@ local config = {
   sections = {
     -- these are to remove the defaults
     lualine_a = {},
-
     lualine_b = {},
     lualine_y = {},
     lualine_z = {},
@@ -386,7 +385,6 @@ ins_left({
     hl = { fg = colors.text },
   },
 })
-
 
 ins_right({
   'diagnostics',

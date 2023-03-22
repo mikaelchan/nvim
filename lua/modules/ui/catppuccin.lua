@@ -77,7 +77,7 @@ require('catppuccin').setup({
     DiagnosticVirtualTextWarn = { bg = 'NONE' },
     DiagnosticVirtualTextInfo = { bg = 'NONE' },
     DiagnosticVirtualTextHint = { bg = 'NONE' },
-    LspInlayHint = { fg = colors.subtext0, bg = colors.surface0 },
+    LspInlayHint = { fg = colors.surface0, bg = 'NONE' },
     CmpBorder = { fg = colors.teal },
     DashboardIcon = { fg = colors.pink },
     DashboardKey = { fg = colors.lavender },

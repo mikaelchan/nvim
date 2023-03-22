@@ -62,7 +62,7 @@ require('dashboard').setup({
       },
       {
         icon = '  ',
-        desc = 'Restore the last seesion                ',
+        desc = 'Restore the last session                ',
         action = "lua require('persistence').load({last=true})",
         shortcut = 'SPC s l',
       },
