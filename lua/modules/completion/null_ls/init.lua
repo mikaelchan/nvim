@@ -24,6 +24,7 @@ local sources = {
   nls.builtins.formatting.sqlformat,
   nls.builtins.formatting.terraform_fmt,
   nls.builtins.formatting.rustfmt,
+  nls.builtins.formatting.clang_format,
   -- Support for nix files
   nls.builtins.formatting.alejandra,
   nls.builtins.formatting.shfmt.with({ extra_args = { '-i', '2', '-ci' } }),
@@ -53,6 +54,7 @@ local sources = {
   -- Support for nix files
   nls.builtins.diagnostics.deadnix,
   nls.builtins.diagnostics.statix,
+  nls.builtins.diagnostics.cpplint,
   nls.builtins.diagnostics.markdownlint.with({
     filetypes = { 'markdown' },
     extra_args = { '-r', '~MD013' },
