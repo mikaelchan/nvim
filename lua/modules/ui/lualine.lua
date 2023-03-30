@@ -379,13 +379,24 @@ ins_left({
   hl = {
     fg = colors.text,
   },
-  left_sep = ' ',
-  right_sep = {
-    str = ' |',
-    hl = { fg = colors.text },
-  },
+})
+ins_left({
+  function()
+    return ''
+  end,
+  padding = { left = 0, right = 0 },
+  color = { fg = colors.surface1 },
+  cond = nil,
 })
 
+ins_right({
+  function()
+    return ''
+  end,
+  padding = { left = 0, right = 0 },
+  color = { fg = colors.surface1 },
+  cond = nil,
+})
 ins_right({
   'diagnostics',
   sources = { 'nvim_diagnostic' },
@@ -417,12 +428,10 @@ ins_right({
     end
     local buf_ft = vim.bo.filetype
     local buf_client_names = {}
-    local only_lsp = ''
     local lsp_icon = '歷'
     for _, client in pairs(buf_clients) do
       if client.name ~= 'null-ls' then
         local _added_client = client.name
-        only_lsp = only_lsp .. _added_client
         _added_client = string.sub(client.name, 1, 7)
         if client.name == 'copilot' then
           lsp_icon = ' '
@@ -446,13 +455,9 @@ ins_right({
       table.insert(buf_client_names, string.sub(lnt, 1, 4))
     end
 
-    if conditions.hide_small() then
-      return lsp_icon .. table.concat(buf_client_names, ', ')
-    elseif conditions.hide_in_width() then
-      return only_lsp
-    else
-      return string.sub(only_lsp, 1, 5)
-    end
+    -- limit buf_client_names to 5
+    buf_client_names = vim.list_slice(buf_client_names, 1, 5)
+    return lsp_icon .. table.concat(buf_client_names, ', ')
   end,
   color = { fg = colors.text, bg = colors.surface1 },
   cond = conditions.hide_in_width,

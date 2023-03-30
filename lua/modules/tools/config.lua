@@ -116,10 +116,10 @@ function config.todo_comments()
   local icons = {
     FIX = '律',
     TODO = '璘',
-    HACK = ' ',
+    HACK = '',
     WARN = '裂',
     PERF = '龍',
-    NOTE = ' ',
+    NOTE = '',
     ERROR = ' ',
     REFS = '',
     SHIELD = '',
