@@ -27,7 +27,7 @@ local sources = {
   nls.builtins.formatting.clang_format,
   -- Support for nix files
   nls.builtins.formatting.alejandra,
-  nls.builtins.formatting.shfmt.with({ extra_args = { '-i', '2', '-ci' } }),
+  nls.builtins.formatting.shfmt.with({ extra_args = { '-i', '2', '-ci' }, filetypes = { 'sh', 'zsh', 'bash' } }),
   nls.builtins.formatting.black.with({ extra_args = { '--fast' }, filetypes = { 'python' } }),
   nls.builtins.formatting.isort.with({ extra_args = { '--profile', 'black' }, filetypes = { 'python' } }),
   nls.builtins.diagnostics.ansiblelint.with({
@@ -55,7 +55,7 @@ local sources = {
   nls.builtins.diagnostics.deadnix,
   nls.builtins.diagnostics.statix,
   nls.builtins.diagnostics.cpplint,
-  nls.builtins.diagnostics.markdownlint.with({
+  nls.builtins.diagnostics.markdownlint_cli2.with({
     filetypes = { 'markdown' },
     extra_args = { '-r', '~MD013' },
   }),

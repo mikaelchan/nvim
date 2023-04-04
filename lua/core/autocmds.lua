@@ -151,3 +151,13 @@ api.nvim_create_autocmd('FileType', {
   pattern = 'toml',
   command = "lua require('cmp').setup.buffer { sources = { { name = 'crates' } } }",
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {'sh', 'zsh', 'bash'},
+  callback = function()
+    vim.lsp.start({
+      name = 'bash-language-server',
+      cmd = { 'bash-language-server', 'start' },
+    })
+  end,
+})

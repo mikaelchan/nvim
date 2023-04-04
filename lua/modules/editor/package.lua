@@ -8,6 +8,7 @@ package({
   config = conf.nvim_treesitter,
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    'mrjones2014/nvim-ts-rainbow',
   },
 })
 package({
@@ -48,8 +49,8 @@ package({
 package({ 'raimon49/requirements.txt.vim', event = 'VeryLazy' })
 
 package({
-    "saecki/crates.nvim",
-    event = { "BufRead Cargo.toml" },
-    dependencies = { { "nvim-lua/plenary.nvim" } },
-config = conf.crates,
-  })
+  'saecki/crates.nvim',
+  event = { 'BufRead Cargo.toml' },
+  dependencies = { { 'nvim-lua/plenary.nvim' } },
+  config = conf.crates,
+})
