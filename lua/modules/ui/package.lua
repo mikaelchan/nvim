@@ -23,7 +23,7 @@ package({
 package({
   'nvim-lualine/lualine.nvim',
   config = conf.lualine,
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = { 'nvim-tree/nvim-web-devicons', 'catppuccin/nvim' },
 })
 
 package({
@@ -90,7 +90,6 @@ package({
   'kristijanhusak/vim-dadbod-ui',
   cmd = { 'DBUIToggle', 'DBUIAddConnection', 'DBUI', 'DBUIFindBuffer', 'DBUIRenameBuffer' },
   init = conf.dadbod_ui,
-
   dependencies = { {
     'tpope/vim-dadbod',
     lazy = true,
@@ -103,4 +102,3 @@ package({
   config = conf.neoscroll,
   event = 'BufRead',
 })
-
