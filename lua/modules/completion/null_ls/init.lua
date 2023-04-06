@@ -55,6 +55,8 @@ local sources = {
   nls.builtins.diagnostics.deadnix,
   nls.builtins.diagnostics.statix,
   nls.builtins.diagnostics.cpplint,
+  nls.builtins.diagnostics.cppcheck,
+  nls.builtins.diagnostics.cmake_lint,
   nls.builtins.diagnostics.markdownlint_cli2.with({
     filetypes = { 'markdown' },
     extra_args = { '-r', '~MD013' },

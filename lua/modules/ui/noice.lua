@@ -87,6 +87,7 @@ noice.setup({
   history = { view = 'popup' },
   cmdline = {
     enabled = true,
+    view = 'cmdline_popup',
     format = {
       filter = { pattern = '^:%s*!', icon = '󰘳 ', ft = 'sh' },
       search_down = { icon = ' ' },
@@ -96,15 +97,8 @@ noice.setup({
   },
   views = {
     cmdline_popup = {
-      position = {
-        row = '20%',
-        col = '50%',
-      },
-    },
-    confirm = {
-      position = {
-        row = '80%',
-        col = '50%',
+      border = {
+        style = 'rounded',
       },
     },
     popup = {
@@ -129,7 +123,7 @@ noice.setup({
   },
   popupmenu = {
     enabled = true,
-    backend = 'cmp',
+    backend = 'nui',
   },
   routes = {
     {

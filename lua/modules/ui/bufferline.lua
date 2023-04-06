@@ -40,7 +40,7 @@ require('bufferline').setup({
           name = 'tests',
           icon = ' ',
           matcher = function(buf)
-            local name = buf.filename
+            local name = buf.name
             return name:match('_spec') or name:match('_test') or name:match('test_')
           end,
         },
@@ -53,14 +53,14 @@ require('bufferline').setup({
         {
           name = 'SQL',
           matcher = function(buf)
-            return buf.filename:match('%.sql$')
+            return buf.name:match('%.sql$')
           end,
         },
         {
           name = 'view models',
           highlight = { sp = '#03589C' },
           matcher = function(buf)
-            return buf.filename:match('view_model%.dart')
+            return buf.name:match('view_model%.dart')
           end,
         },
         {
@@ -85,7 +85,7 @@ require('bufferline').setup({
           highlight = { sp = '#F6A878' },
           name = 'config',
           matcher = function(buf)
-            local filename = buf.filename
+            local filename = buf.name
             if filename == nil then
               return false
             end
@@ -149,7 +149,7 @@ require('bufferline').setup({
     max_name_length = 18,
     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
     truncate_names = true, -- whether or not tab names should be truncated
-    numbers= 'ordinal',
+    numbers = 'ordinal',
     tab_size = 18,
     color_icons = true,
     show_buffer_close_icons = false,
