@@ -9,13 +9,13 @@ api.nvim_create_autocmd('BufWritePre', {
   end,
 })
 
-api.nvim_create_autocmd('BufWritePre', {
-  group = my_group,
-  pattern = '*.c,*.cpp,*.lua,*.go,*.rs,*.py,*.ts,*.tsx',
-  callback = function()
-    require('modules.tools.formatter').format()
-  end,
-})
+-- api.nvim_create_autocmd('BufWritePre', {
+--   group = my_group,
+--   pattern = '*.c,*.cpp,*.lua,*.go,*.rs,*.py,*.ts,*.tsx',
+--   callback = function()
+--     require('modules.tools.formatter').format()
+--   end,
+-- })
 
 api.nvim_create_autocmd('BufRead', {
   group = my_group,
@@ -153,7 +153,7 @@ api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = {'sh', 'zsh', 'bash'},
+  pattern = { 'sh', 'zsh', 'bash' },
   callback = function()
     vim.lsp.start({
       name = 'bash-language-server',
