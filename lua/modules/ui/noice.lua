@@ -5,7 +5,7 @@ notify.setup({
   icons = {
     DEBUG = ' ',
     ERROR = ' ',
-    INFO = '',
+    INFO = '󰛯 ',
     TRACE = ' ',
     WARN = ' ',
   },
@@ -92,7 +92,7 @@ noice.setup({
       filter = { pattern = '^:%s*!', icon = '󰘳 ', ft = 'sh' },
       search_down = { icon = ' ' },
       search_up = { icon = ' ' },
-      help = { icon = ' ' },
+      help = { icon = '󰺴 ' },
     },
   },
   views = {

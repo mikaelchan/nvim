@@ -9,11 +9,57 @@ function config.nvim_tree()
 end
 
 function config.catppuccin()
-  require('modules.ui.catppuccin')
+  require('catppuccin').setup({
+    flavour = 'mocha', -- latte, frappe, macchiato, mocha
+    background = { -- :h background
+      light = 'latte',
+      dark = 'mocha',
+    },
+    transparent_background = true, -- disables setting the background color.
+    styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+      comments = { 'italic' }, -- Change the style of comments
+      conditionals = { 'italic' },
+      loops = {},
+      functions = { 'italic' },
+      keywords = { 'italic' },
+      strings = {},
+      variables = {},
+      numbers = {},
+      booleans = {},
+      properties = {},
+      types = { 'italic' },
+      operators = {},
+    },
+    integrations = {
+      cmp = true,
+      gitsigns = true,
+      nvimtree = true,
+      treesitter = true,
+      notify = true,
+      mini = true,
+      indent_blankline = {
+        enabled = true,
+        colored_indent_levels = true,
+      },
+      dashboard = true,
+      harpoon = true,
+      hop = true,
+      lsp_saga = true,
+      markdown = true,
+      mason = true,
+      noice = true,
+      overseer = true,
+      rainbow_delimiters = true,
+      which_key = true,
+    },
+  })
+
+  -- setup must be called before loading
+  vim.cmd.colorscheme('catppuccin')
 end
 
-function config.lualine()
-  require('modules.ui.lualine')
+function config.galaxyline()
+  require('modules.ui.eviline')
 end
 
 function config.gitsigns()
@@ -60,9 +106,9 @@ function config.hlslens()
       local indicator, text, chunks
       local abs_r_idx = math.abs(r_idx)
       if abs_r_idx > 1 then
-        indicator = string.format('%d%s', abs_r_idx, sfw ~= (r_idx > 1) and '' or '')
+        indicator = string.format('%d%s', abs_r_idx, sfw ~= (r_idx > 1) and '' or '')
       elseif abs_r_idx == 1 then
-        indicator = sfw ~= (r_idx == 1) and '' or ''
+        indicator = sfw ~= (r_idx == 1) and '' or ''
       else
         indicator = ''
       end
@@ -85,7 +131,7 @@ function config.hlslens()
   })
 end
 
-function config.colorozer()
+function config.colorizer()
   require('colorizer').setup({ '*' }, {
     RGB = true, -- #RGB hex codes
     RRGGBB = true, -- #RRGGBB hex codes
@@ -97,88 +143,54 @@ function config.colorozer()
   })
 end
 
+function config.rainbow_delimiters()
+  local rainbow_delimiters = require('rainbow-delimiters')
+
+  vim.g.rainbow_delimiters = {
+    strategy = {
+      [''] = rainbow_delimiters.strategy['global'],
+      vim = rainbow_delimiters.strategy['local'],
+    },
+    query = {
+      [''] = 'rainbow-delimiters',
+      lua = 'rainbow-blocks',
+    },
+    highlight = {
+      'RainbowDelimiterRed',
+      'RainbowDelimiterYellow',
+      'RainbowDelimiterBlue',
+      'RainbowDelimiterOrange',
+      'RainbowDelimiterGreen',
+      'RainbowDelimiterViolet',
+      'RainbowDelimiterCyan',
+    },
+  }
+end
+
 function config.indent_blankline()
-  vim.opt.list = true
-  vim.opt.listchars:append('space:⋅')
-  vim.opt.listchars:append('eol:↴')
-  require('indent_blankline').setup({
-    enabled = true,
-    bufname_exclude = { 'README.md' },
-    buftype_exclude = { 'terminal', 'nofile' },
-    filetype_exclude = {
-      'alpha',
-      'log',
-      'gitcommit',
-      'dapui_scopes',
-      'dapui_stacks',
-      'dapui_watches',
-      'dapui_breakpoints',
-      'dapui_hover',
-      'LuaTree',
-      'dbui',
-      'UltestSummary',
-      'UltestOutput',
-      'vimwiki',
-      'markdown',
-      'json',
-      'txt',
-      'NvimTree',
-      'git',
-      'TelescopePrompt',
-      'undotree',
-      'flutterToolsOutline',
-      'org',
-      'orgagenda',
-      'help',
-      'startify',
-      'dashboard',
-      'lazy',
-      'neogitstatus',
-      'Outline',
-      'Trouble',
-      'lspinfo',
-      '', -- for all buffers without a file type
-    },
-    -- char = "▏",
-    char_list = { '', '┊', '┆', '¦', '|', '¦', '┆', '┊', '' },
-    char_highlight_list = {
-      'IndentBlanklineIndent1',
-      'IndentBlanklineIndent2',
-      'IndentBlanklineIndent3',
-      'IndentBlanklineIndent4',
-      'IndentBlanklineIndent5',
-      'IndentBlanklineIndent6',
-    },
-    show_trailing_blankline_indent = false,
-    show_first_indent_level = false,
-    space_char_blankline = ' ',
-    use_treesitter = true,
-    show_foldtext = false,
-    show_current_context = true,
-    show_current_context_start = false,
-    context_patterns = {
-      'class',
-      'return',
-      'function',
-      'method',
-      '^if',
-      '^do',
-      '^switch',
-      '^while',
-      'jsx_element',
-      '^for',
-      '^object',
-      '^table',
-      'block',
-      'arguments',
-      'if_statement',
-      'else_clause',
-      'jsx_element',
-      'jsx_self_closing_element',
-      'try_statement',
-      'catch_clause',
-      'import_statement',
-      'operation_type',
+  local highlight = {
+    'RainbowRed',
+    'RainbowYellow',
+    'RainbowBlue',
+    'RainbowOrange',
+    'RainbowGreen',
+    'RainbowViolet',
+    'RainbowCyan',
+  }
+  require('ibl').setup({
+    indent = { highlight = highlight },
+    exclude = {
+      filetypes = {
+        'lspinfo',
+        'packer',
+        'checkhealth',
+        'help',
+        'man',
+        'gitcommit',
+        'TelescopePrompt',
+        'TelescopeResults',
+        'dashboard',
+      },
     },
   })
 end

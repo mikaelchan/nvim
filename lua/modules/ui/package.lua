@@ -4,6 +4,7 @@ local conf = require('modules.ui.config')
 package({
   'catppuccin/nvim',
   name = 'catppuccin',
+  priority = 1000,
   config = conf.catppuccin,
 })
 
@@ -21,9 +22,9 @@ package({
 })
 
 package({
-  'nvim-lualine/lualine.nvim',
-  config = conf.lualine,
-  dependencies = { 'nvim-tree/nvim-web-devicons', 'catppuccin/nvim' },
+  'nvimdev/galaxyline.nvim',
+  config = conf.galaxyline,
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
 })
 
 package({
@@ -56,12 +57,14 @@ package({
 
 package({
   'norcalli/nvim-colorizer.lua',
-  config = conf.colorozer,
+  config = conf.colorizer,
   event = 'BufReadPre',
 })
 
-package({ 'mrjones2014/nvim-ts-rainbow' })
-
+package({
+  url = 'https://gitlab.com/HiPhish/rainbow-delimiters.nvim',
+  config = conf.rainbow_delimiters,
+})
 package({
   'lukas-reineke/indent-blankline.nvim',
   config = conf.indent_blankline,

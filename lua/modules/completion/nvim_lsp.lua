@@ -1,7 +1,7 @@
 local signs = {
   Error = ' ',
   Warn = ' ',
-  Info = '',
+  Info = '󰛯 ',
   Hint = ' ',
 }
 for type, icon in pairs(signs) do
@@ -57,5 +57,6 @@ lspconfig.rust_analyzer.setup(require('modules.completion.lsp.rust_analyzer'))
 lspconfig.pyright.setup(require('modules.completion.lsp.pyright'))
 lspconfig.taplo.setup(require('modules.completion.lsp.taplo'))
 lspconfig.yamlls.setup(require('modules.completion.lsp.yamlls'))
+lspconfig.clangd.setup(require('modules.completion.lsp.clangd'))
 
 require('lspconfig.ui.windows').default_options.border = 'rounded'

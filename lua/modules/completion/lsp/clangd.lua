@@ -1,5 +1,6 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities.offsetEncoding = { 'utf-16' }
 
 local mappings = {}
 local opts = {
@@ -26,31 +27,26 @@ mappings['lx'] = { '<cmd>CMakeClean<CR>', 'Clean CMake Targets' }
 mappings['lC'] = { '<cmd>CMakeStop<CR>', 'Stop CMake' }
 
 return {
-  server = {
-    cmd = {
-      'clangd',
-      '--fallback-style=google',
-      '--background-index',
-      '-j=12',
-      '--all-scopes-completion',
-      '--pch-storage=disk',
-      '--clang-tidy',
-      '--log=error',
-      '--completion-style=detailed',
-      '--header-insertion=iwyu',
-      '--header-insertion-decorators',
-      '--enable-config',
-      '--offset-encoding=utf-16',
-      '--ranking-model=heuristics',
-      '--folding-ranges',
-    },
-    on_attach = function(client, bufnr)
-      require('modules.completion.lsp').setup_codelens_refresh(client, bufnr)
-      require('which-key').register(mappings, opts)
-    end,
-    capabilities = capabilities,
+  cmd = {
+    'clangd',
+    '--fallback-style=google',
+    '--background-index',
+    '-j=12',
+    '--all-scopes-completion',
+    '--pch-storage=disk',
+    '--clang-tidy',
+    '--log=error',
+    '--completion-style=detailed',
+    '--header-insertion=iwyu',
+    '--header-insertion-decorators',
+    '--enable-config',
+    -- '--offset-encoding=utf-16',
+    '--ranking-model=heuristics',
+    '--folding-ranges',
   },
-  extensions = {
-    autoSetHints = false,
-  },
+  on_attach = function(client, bufnr)
+    require('modules.completion.lsp').setup_codelens_refresh(client, bufnr)
+    require('which-key').register(mappings, opts)
+  end,
+  capabilities = capabilities,
 }

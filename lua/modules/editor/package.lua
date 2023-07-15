@@ -54,3 +54,9 @@ package({
   dependencies = { { 'nvim-lua/plenary.nvim' } },
   config = conf.crates,
 })
+
+package({
+  'folke/trouble.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+})
+

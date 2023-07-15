@@ -90,7 +90,6 @@ package({
 
 package({
   'zbirenbaum/copilot-cmp',
-  after = { 'copilot.lua' },
   config = conf.copilot_cmp,
 })
 
@@ -105,8 +104,8 @@ package({
 
 package({ 'kristijanhusak/vim-dadbod-completion' })
 
-package({
-  'p00f/clangd_extensions.nvim',
-  config = conf.clangd_extensions,
-  ft = { 'c', 'cpp', 'objc', 'objcpp', 'h', 'hpp' },
-})
+-- package({
+--   'p00f/clangd_extensions.nvim',
+--   config = conf.clangd_extensions,
+--   ft = { 'c', 'cc', 'cpp', 'objc', 'objcpp', 'h', 'hpp' },
+-- })

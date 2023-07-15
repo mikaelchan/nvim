@@ -106,8 +106,4 @@ function config.package_info()
   require('package-info').setup()
 end
 
-function config.clangd_extensions()
-  require('clangd_extensions').setup(require('modules.completion.lsp.clangd'))
-end
-
 return config
