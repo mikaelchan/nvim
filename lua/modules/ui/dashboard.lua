@@ -31,7 +31,7 @@ require('dashboard').setup({
         action = 'Lazy update',
       },
       {
-        icon = '  ',
+        icon = '󱋡  ',
         desc = 'Recently opened files                   ',
         action = 'Telescope oldfiles',
         shortcut = 'SPC f h',

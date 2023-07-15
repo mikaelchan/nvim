@@ -10,11 +10,11 @@ require('gitsigns').setup({
     },
     delete = {
       hl = 'GitSignsDelete',
-      text = '契',
+      text = '',
     },
     topdelete = {
       hl = 'GitSignsDelete',
-      text = '契',
+      text = '',
     },
     changedelete = {
       hl = 'GitSignsChange',

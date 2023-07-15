@@ -25,29 +25,29 @@ local vopts = {
 }
 
 local vmappings = {
-  ['/'] = { esc_cmd("lua require('Comment.api').toggle.linewise(vim.fn.visualmode())"), ' Comment' },
+  ['/'] = { esc_cmd("lua require('Comment.api').toggle.linewise(vim.fn.visualmode())"), '󱆿 Comment' },
 }
 
 local mappings = {
-  ['/'] = { cmd("lua require('Comment.api').toggle.linewise.current()"), ' Comment' },
+  ['/'] = { cmd("lua require('Comment.api').toggle.linewise.current()"), '󱆿 Comment' },
   [';'] = { cmd('Dashboard'), ' Dashboard' },
   ['<leader>'] = { cmd("lua require('harpoon.ui').toggle_quick_menu()"), ' Harpoon' },
-  ['1'] = { cmd("lua require('harpoon.ui').nav_file(1)"), ' goto1' },
-  ['2'] = { cmd("lua require('harpoon.ui').nav_file(2)"), ' goto2' },
-  ['3'] = { cmd("lua require('harpoon.ui').nav_file(3)"), ' goto3' },
-  ['4'] = { cmd("lua require('harpoon.ui').nav_file(4)"), ' goto4' },
-  a = { cmd("lua require('harpoon.mark').add_file()"), ' Add mark' },
+  ['1'] = { cmd("lua require('harpoon.ui').nav_file(1)"), '󰎤 goto1' },
+  ['2'] = { cmd("lua require('harpoon.ui').nav_file(2)"), '󰎧 goto2' },
+  ['3'] = { cmd("lua require('harpoon.ui').nav_file(3)"), '󰎪 goto3' },
+  ['4'] = { cmd("lua require('harpoon.ui').nav_file(4)"), '󰎭 goto4' },
+  a = { cmd("lua require('harpoon.mark').add_file()"), '󰃁 Add mark' },
   w = { cmd('w!'), ' Save' },
-  q = { cmd('confirm q'), ' Quit' },
+  q = { cmd('confirm q'), '󰗼 Quit' },
   c = { cmd("lua require('modules.tools.buffer').kill()"), ' Close buffer' },
-  i = { cmd("lua require('lsp-inlayhints').toggle()"), 'ﳟ Inlay hints' },
-  e = { cmd('NvimTreeToggle'), ' Explorer' },
+  i = { cmd("lua require('lsp-inlayhints').toggle()"), '󰭴 Inlay hints' },
+  e = { cmd('NvimTreeToggle'), ' Explorer' },
   o = { cmd('Lspsaga outline'), ' Symbol outline' },
-  v = { cmd("lua require('lsp_lines').toggle()"), '識LSP lines' },
-  y = { cmd("lua require('telescope').extensions.neoclip.default()"), ' Yank history' },
-  h = { cmd('Cheat'), ' Cheat' },
+  v = { cmd("lua require('lsp_lines').toggle()"), '󱖫 LSP lines' },
+  y = { cmd("lua require('telescope').extensions.neoclip.default()"), ' Yank history' },
+  h = { cmd('Cheat'), '󱚟 Cheat' },
   b = {
-    name = '﩯Buffers',
+    name = ' Buffers',
     ['1'] = { cmd('BufferLineGoToBuffer 1'), 'Goto 1' },
     ['2'] = { cmd('BufferLineGoToBuffer 2'), 'Goto 2' },
     ['3'] = { cmd('BufferLineGoToBuffer 3'), 'Goto 3' },

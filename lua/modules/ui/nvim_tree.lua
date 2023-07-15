@@ -144,21 +144,8 @@ require('nvim-tree').setup({
         git = true,
       },
       glyphs = {
-        default = '',
-        symlink = '',
-        bookmark = '',
-        folder = {
-          arrow_closed = '',
-          arrow_open = '',
-          default = '',
-          open = '',
-          empty = '',
-          empty_open = '',
-          symlink = '',
-          symlink_open = '',
-        },
         git = {
-          unstaged = '',
+          unstaged = '󱨈',
           staged = '',
           unmerged = '',
           renamed = '',
@@ -198,7 +185,7 @@ require('nvim-tree').setup({
     },
   },
   filters = {
-    dotfiles = false,
+    dotfiles = true,
     git_clean = false,
     no_buffer = false,
     custom = { 'node_modules', '\\.cache' },
