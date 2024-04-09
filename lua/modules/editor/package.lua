@@ -9,6 +9,7 @@ package({
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'mrjones2014/nvim-ts-rainbow',
+    'JoosepAlviste/nvim-ts-context-commentstring',
   },
 })
 package({
@@ -59,4 +60,3 @@ package({
   'folke/trouble.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 })
-

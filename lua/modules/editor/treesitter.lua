@@ -2,10 +2,24 @@ local languages = vim.tbl_flatten({
   { 'bash', 'c', 'c_sharp', 'cmake', 'comment', 'cpp', 'css', 'd', 'dart' },
   { 'dockerfile', 'elixir', 'elm', 'erlang', 'fennel', 'fish', 'go', 'gomod' },
   { 'gomod', 'graphql', 'hcl', 'html', 'java', 'javascript', 'jsdoc' },
-  { 'json', 'jsonc', 'julia', 'kotlin', 'latex', 'ledger', 'lua', 'make' },
+  { 'json', 'jsonc', 'julia', 'kotlin', 'ledger', 'lua', 'make' },
   { 'markdown', 'nix', 'ocaml', 'perl', 'php', 'python', 'query', 'r' },
-  { 'regex', 'rego', 'ruby', 'rust', 'scala', 'scss', 'solidity', 'swift' },
-  { 'teal', 'toml', 'tsx', 'typescript', 'vim', 'vue', 'yaml', 'zig' },
+  { 'regex', 'rego', 'ruby', 'rust', 'scala', 'scss', 'solidity' },
+  { 'toml', 'tsx', 'typescript', 'vim', 'vue', 'yaml', 'zig' },
+})
+require('ts_context_commentstring').setup({
+  enable = true,
+  enable_autocmd = false,
+  config = {
+    -- Languages that have a single comment style
+    typescript = '// %s',
+    css = '/* %s */',
+    scss = '/* %s */',
+    html = '<!-- %s -->',
+    svelte = '<!-- %s -->',
+    vue = '<!-- %s -->',
+    json = '',
+  },
 })
 require('nvim-treesitter.configs').setup({
   ensure_installed = languages,
@@ -27,20 +41,6 @@ require('nvim-treesitter.configs').setup({
       local status_ok, big_file_detected = pcall(vim.api.nvim_buf_get_var, buf, 'bigfile_disable_treesitter')
       return status_ok and big_file_detected
     end,
-  },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-    config = {
-      -- Languages that have a single comment style
-      typescript = '// %s',
-      css = '/* %s */',
-      scss = '/* %s */',
-      html = '<!-- %s -->',
-      svelte = '<!-- %s -->',
-      vue = '<!-- %s -->',
-      json = '',
-    },
   },
   indent = { enable = true, disable = { 'yaml', 'python' } },
   autotag = { enable = false },

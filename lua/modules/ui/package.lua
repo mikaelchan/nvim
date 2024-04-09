@@ -62,12 +62,13 @@ package({
 })
 
 package({
-  url = 'https://gitlab.com/HiPhish/rainbow-delimiters.nvim',
-  config = conf.rainbow_delimiters,
+  'HiPhish/rainbow-delimiters.nvim',
+  name = 'rainbow_delimiters',
 })
 package({
   'lukas-reineke/indent-blankline.nvim',
   config = conf.indent_blankline,
+  dependencies = {},
 })
 
 package({
